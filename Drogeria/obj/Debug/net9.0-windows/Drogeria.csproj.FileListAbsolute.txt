@@ -1,0 +1,14 @@
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Drogeria.exe
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Drogeria.deps.json
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Drogeria.runtimeconfig.json
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Drogeria.dll
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Drogeria.pdb
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.AssemblyInfoInputs.cache
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.AssemblyInfo.cs
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.csproj.CoreCompileInputs.cache
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.dll
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\refint\Drogeria.dll
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.pdb
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\Drogeria.genruntimeconfig.cache
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\obj\Debug\net9.0-windows\ref\Drogeria.dll
