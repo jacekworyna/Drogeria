@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Drogeria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd438f3647fcce3ac54180111e46fd144c37432")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9abad149491e70d75f1c24cffcc824436f2d37eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Drogeria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Drogeria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
