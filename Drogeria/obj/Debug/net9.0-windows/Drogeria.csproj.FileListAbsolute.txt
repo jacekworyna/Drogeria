@@ -133,3 +133,4 @@ C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\ru\Micro
 C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\jacek\RiderProjects\Drogeria\Drogeria\bin\Debug\net9.0-windows\Bogus.dll

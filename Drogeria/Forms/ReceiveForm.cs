@@ -32,7 +32,6 @@ public partial class ReceiveForm : Form
             Controls = { btnOk, btnCancel }
         });
 
-        // załaduj produkty (tylko aktywne)
         var list = _ctx.Products
             .Where(p => p.IsActive)
             .OrderBy(p => p.Name)

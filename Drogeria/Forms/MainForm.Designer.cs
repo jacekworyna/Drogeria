@@ -37,9 +37,7 @@ partial class MainForm
         tabAdmin = new System.Windows.Forms.TabPage();
         tabControl.SuspendLayout();
         SuspendLayout();
-        // 
-        // tabControl
-        // 
+
         tabControl.Controls.Add(tabSales);
         tabControl.Controls.Add(tabInventory);
         tabControl.Controls.Add(tabOrders);
@@ -51,9 +49,7 @@ partial class MainForm
         tabControl.SelectedIndex = 0;
         tabControl.Size = new System.Drawing.Size(800, 450);
         tabControl.TabIndex = 0;
-        // 
-        // tabSales
-        // 
+
         tabSales.Location = new System.Drawing.Point(4, 24);
         tabSales.Name = "tabSales";
         tabSales.Padding = new System.Windows.Forms.Padding(3);
@@ -61,9 +57,7 @@ partial class MainForm
         tabSales.TabIndex = 0;
         tabSales.Text = "Sprzedaż";
         tabSales.UseVisualStyleBackColor = true;
-        // 
-        // tabInventory
-        // 
+
         tabInventory.Location = new System.Drawing.Point(4, 24);
         tabInventory.Name = "tabInventory";
         tabInventory.Padding = new System.Windows.Forms.Padding(3);
@@ -71,9 +65,7 @@ partial class MainForm
         tabInventory.TabIndex = 1;
         tabInventory.Text = "Magazyn";
         tabInventory.UseVisualStyleBackColor = true;
-        // 
-        // tabOrders
-        // 
+
         tabOrders.Location = new System.Drawing.Point(4, 24);
         tabOrders.Name = "tabOrders";
         tabOrders.Padding = new System.Windows.Forms.Padding(3);
@@ -81,9 +73,7 @@ partial class MainForm
         tabOrders.TabIndex = 2;
         tabOrders.Text = "Zamówienia";
         tabOrders.UseVisualStyleBackColor = true;
-        // 
-        // tabReports
-        // 
+
         tabReports.Location = new System.Drawing.Point(4, 24);
         tabReports.Name = "tabReports";
         tabReports.Padding = new System.Windows.Forms.Padding(3);
@@ -91,9 +81,7 @@ partial class MainForm
         tabReports.TabIndex = 3;
         tabReports.Text = "Raporty";
         tabReports.UseVisualStyleBackColor = true;
-        // 
-        // tabAdmin
-        // 
+
         tabAdmin.Location = new System.Drawing.Point(4, 24);
         tabAdmin.Name = "tabAdmin";
         tabAdmin.Padding = new System.Windows.Forms.Padding(3);
@@ -101,9 +89,7 @@ partial class MainForm
         tabAdmin.TabIndex = 4;
         tabAdmin.Text = "Administracja";
         tabAdmin.UseVisualStyleBackColor = true;
-        // 
-        // MainForm
-        // 
+
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);

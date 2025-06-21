@@ -1,23 +1,25 @@
-﻿// SalesView.cs
-
-using Drogeria.Data;
+﻿using Drogeria.Data;
+using Drogeria.Forms;
 using Microsoft.EntityFrameworkCore;
 
 namespace Drogeria.Views;
 
-/// <summary>
-/// Zakładka „Sprzedaż dzisiaj” – pokazuje wszystkie pozycje paragonów z bieżącej daty.
-/// </summary>
-public partial class SalesView : UserControl
+public class SalesView : UserControl
 {
     private readonly DrogeriaContext _ctx = new();
 
-    // ---------- UI ----------
     private readonly DataGridView _dgv = new()
     {
         Dock = DockStyle.Fill,
         AutoGenerateColumns = true,
         ReadOnly = true
+    };
+
+    private readonly Button _btnNewSale = new()
+    {
+        Text = "Nowa sprzedaż",
+        Dock = DockStyle.Top,
+        Height = 32
     };
 
     private readonly Button _btnRefresh = new()
@@ -30,34 +32,33 @@ public partial class SalesView : UserControl
     public SalesView()
     {
         InitializeComponent();
-        Load += (_, _) => LoadTodaySales();       // ładujemy dopiero w runtime
+        Load += (_, _) => LoadTodaySales();
     }
 
-    // ---------- Inicjalizacja kontrolek ----------
     private void InitializeComponent()
     {
         Controls.Add(_dgv);
         Controls.Add(_btnRefresh);
-        _btnRefresh.Click += (_, _) => LoadTodaySales();
+        Controls.Add(_btnNewSale);
 
-        // rozmiar design-time – opcjonalny, aby coś było widać w podglądzie
+        _btnRefresh.Click += (_, _) => LoadTodaySales();
+        _btnNewSale.Click += (_, _) => CreateSampleSale();
+
         Size = new Size(650, 450);
     }
 
-    // ---------- Logika ----------
     private void LoadTodaySales()
     {
-        // EF Core 8 tłumaczy DateOnly/DateTime.Date, ale DateDiffDay jest 100 % SQL-side
         var today = DateTime.Today;
         var list = _ctx.SaleItems
                        .Where(i => EF.Functions.DateDiffDay(i.Sale.SaleDate, today) == 0)
                        .Select(i => new
                        {
                            i.SaleId,
-                           Produkt  = i.Product.Name,
+                           Produkt = i.Product.Name,
                            i.Quantity,
-                           Netto    = i.UnitPrice,
-                           Brutto   = i.UnitPrice * (1 + i.VatRate)
+                           Netto = i.UnitPrice,
+                           Brutto = i.UnitPrice * (1 + i.VatRate)
                        })
                        .OrderBy(i => i.SaleId)
                        .ToList();
@@ -65,11 +66,22 @@ public partial class SalesView : UserControl
         _dgv.DataSource = list;
     }
 
-    // ---------- Cleanup ----------
+    private void CreateSampleSale()
+    {
+        using var form = new NewSaleForm();
+        if (form.ShowDialog() == DialogResult.OK)
+        {
+            MessageBox.Show("Sprzedaż zapisana.");
+            LoadTodaySales();
+        }
+    }
+
+
+
     protected override void Dispose(bool disposing)
     {
         if (disposing)
-            _ctx.Dispose(); // zwolnij połączenie do bazy
+            _ctx.Dispose();
         base.Dispose(disposing);
     }
 }

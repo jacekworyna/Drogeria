@@ -1,17 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using Drogeria.Data;
+﻿using Drogeria.Data;
 
 namespace Drogeria.Views
 {
-    public partial class ReportsView : UserControl
+    public class ReportsView : UserControl
     {
         private readonly DrogeriaContext _ctx = new();
 
         public ReportsView() { InitializeComponent(); }
 
-        /* ---------- UI ---------- */
         private ComboBox cmbReport = new() { Dock = DockStyle.Top };
         private DateTimePicker dtFrom = new() { Dock = DockStyle.Top };
         private DataGridView dgv = new() { Dock = DockStyle.Fill, ReadOnly = true };

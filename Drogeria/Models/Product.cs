@@ -22,10 +22,16 @@ public class Product
     [Column(TypeName = "decimal(4,2)")]
     public decimal VatRate { get; set; } = 0.23m;
 
+    [MaxLength(20)]
+    public string? EAN { get; set; }
+
     public bool IsActive { get; set; } = true;
 
     public int CategoryId { get; set; }
     public Category Category { get; set; } = null!;
+
+    public int SupplierId { get; set; }
+    public Supplier Supplier { get; set; } = null!;
 
     public ICollection<SaleItem>? SaleItems { get; set; }
     public ICollection<PurchaseOrderLine>? PurchaseOrderLines { get; set; }

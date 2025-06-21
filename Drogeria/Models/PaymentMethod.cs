@@ -2,8 +2,5 @@
 
 public enum PaymentMethod
 {
-    Cash,
-    Card,
-    Blik,
-    Transfer
+    Cash
 }

@@ -5,14 +5,11 @@ namespace Drogeria.Forms;
 
 public partial class OrderWizardForm : Form
 {
-    /* -------- public out -------- */
     public int SelectedSupplierId => ((Supplier)cmbSupplier.SelectedItem!).SupplierId;
     public List<(int productId, int qty, decimal unitCost)> Lines { get; } = new();
 
-    /* -------- zależności -------- */
     private readonly DrogeriaContext _ctx;
 
-    /* -------- UI -------- */
     private readonly ComboBox      cmbSupplier = new() { Dock = DockStyle.Top, DropDownStyle = ComboBoxStyle.DropDownList };
     private readonly DataGridView  dgv         = new() { Dock = DockStyle.Fill, AllowUserToAddRows = true };
     private readonly Button        btnAuto     = new() { Text = "Dodaj braki", Dock = DockStyle.Top };
@@ -23,7 +20,7 @@ public partial class OrderWizardForm : Form
     {
         _ctx = ctx;
 
-        Text            = "Kreator zamówienia";
+        Text = "Kreator zamówienia";
         FormBorderStyle = FormBorderStyle.SizableToolWindow;
         StartPosition   = FormStartPosition.CenterParent;
         Width  = 700;
@@ -38,13 +35,11 @@ public partial class OrderWizardForm : Form
             Controls = { btnOk, btnCancel }
         });
 
-        /* ---- dostawcy ---- */
         cmbSupplier.DataSource    = _ctx.Suppliers.Where(s => s.IsActive)
                                                   .OrderBy(s => s.Name)
                                                   .ToList();
         cmbSupplier.DisplayMember = "Name";
 
-        /* ---- siatka ---- */
         dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "ID",       Width = 60 });
         dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Produkt",  Width = 250 });
         dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ilość",    Width = 60 });
@@ -53,7 +48,6 @@ public partial class OrderWizardForm : Form
         btnAuto.Click += (_, _) => AddShortages();
     }
 
-    /* ------ braki poniżej progu ------ */
     private void AddShortages()
     {
         var shortList = _ctx.StockLevels
@@ -71,7 +65,6 @@ public partial class OrderWizardForm : Form
             dgv.Rows.Add(p.ProductId, p.Name, p.QtyToOrder, p.Price);
     }
 
-    /* ------ walidacja i zwrot ------ */
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         base.OnFormClosing(e);

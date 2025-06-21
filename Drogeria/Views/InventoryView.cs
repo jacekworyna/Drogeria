@@ -4,7 +4,7 @@ using Drogeria.Models;
 
 namespace Drogeria.Views
 {
-    public partial class InventoryView : UserControl
+    public class InventoryView : UserControl
     {
         private readonly DrogeriaContext _ctx = new();
 
@@ -13,7 +13,6 @@ namespace Drogeria.Views
         private void InventoryView_Load(object sender, EventArgs e) => RefreshGrid();
 
         
-        /* ---------- UI ---------- */
         private DataGridView dgv = new() { Dock = DockStyle.Fill, ReadOnly = true };
         private Button btnReceive = new() { Text = "Przyjęcie (+)", Dock = DockStyle.Top };
         private Button btnAdjust  = new() { Text = "Korekta (±)",  Dock = DockStyle.Top };
@@ -28,7 +27,6 @@ namespace Drogeria.Views
             Load  += InventoryView_Load;
         }
 
-        /* ---------- Logika ---------- */
         private void RefreshGrid()
         {
             dgv.DataSource = _ctx.StockLevels
@@ -50,19 +48,17 @@ namespace Drogeria.Views
             int productId = dlg.SelectedProductId;
             int qty       = dlg.Quantity;
 
-            /* --------- 1) InventoryMovement -------------- */
             var move = new InventoryMovement
             {
                 ProductId      = productId,
                 MovementType   = MovementType.PurchaseIn,
-                QuantityChange =  qty,                // ← Twoja nazwa
+                QuantityChange =  qty,
                 Timestamp      = DateTime.UtcNow,
-                SourceLineId   = null,                // np. PurchaseOrderLineId – tu nie wpisujemy
-                SourceTable    = "ManualReceive"      // opcjonalnie dla śledzenia
+                SourceLineId   = null,
+                SourceTable    = "ManualReceive"
             };
             _ctx.InventoryMovements.Add(move);
 
-            /* --------- 2) StockLevel ---------------------- */
             var stock = _ctx.StockLevels.Find(productId);
             if (stock is null)
             {
@@ -90,11 +86,10 @@ namespace Drogeria.Views
             if (dlg.ShowDialog(this) != DialogResult.OK) return;
 
             int  productId = dlg.SelectedProductId;
-            int  qty       = dlg.Quantity;         // zawsze dodatnie
-            bool isMinus   = dlg.IsMinus;          // true → ujemna korekta
+            int  qty       = dlg.Quantity;
+            bool isMinus   = dlg.IsMinus;
             string reason  = dlg.Reason;
 
-            /* ---------- 1) ruch magazynowy ---------- */
             var move = new InventoryMovement
             {
                 ProductId      = productId,
@@ -107,7 +102,6 @@ namespace Drogeria.Views
             };
             _ctx.InventoryMovements.Add(move);
 
-            /* ---------- 2) stan zapasu --------------- */
             var stock = _ctx.StockLevels.Find(productId);
             if (stock == null)
             {

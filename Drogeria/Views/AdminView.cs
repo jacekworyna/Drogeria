@@ -1,24 +1,20 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using Drogeria.Data;
+﻿using Drogeria.Data;
 
 namespace Drogeria.Views
 {
-    public partial class AdminView : UserControl
+    public class AdminView : UserControl
     {
         private readonly DrogeriaContext _ctx = new();
 
         public AdminView() { InitializeComponent(); }
 
-        /* ---------- UI ---------- */
         private ComboBox cmbEntity = new() { Dock = DockStyle.Top };
         private DataGridView dgv = new() { Dock = DockStyle.Fill };
         private BindingSource _bs = new();
 
         private void InitializeComponent()
         {
-            cmbEntity.Items.AddRange(new[] { "Produkty", "Kategorie", "Dostawcy", "Pracownicy" });
+            cmbEntity.Items.AddRange( "Produkty", "Kategorie", "Dostawcy", "Pracownicy" );
             Controls.Add(dgv);
             Controls.Add(cmbEntity);
             dgv.DataSource = _bs;
@@ -56,14 +52,13 @@ namespace Drogeria.Views
                 return;
             }
 
-            _ctx.Remove(e.Row.DataBoundItem!);
+            _ctx.Remove(e.Row!.DataBoundItem!);
             _ctx.SaveChanges();
         }
 
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
-            // automatyczne zapisywanie zmian po opuszczeniu zakładki
             _ctx.SaveChanges();
         }
     }

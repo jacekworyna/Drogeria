@@ -4,7 +4,7 @@ using Drogeria.Models;
 
 namespace Drogeria.Views
 {
-    public partial class OrdersView : UserControl
+    public class OrdersView : UserControl
     {
         private readonly DrogeriaContext _ctx = new();
 
@@ -15,7 +15,6 @@ namespace Drogeria.Views
 
         private void OrdersView_Load(object? sender, EventArgs e) => RefreshGrid();
 
-        /* ---------- UI ---------- */
         private DataGridView dgv = new() { Dock = DockStyle.Fill, ReadOnly = true };
         private Button btnNew = new() { Text = "Nowe zamówienie", Dock = DockStyle.Top };
         private Button btnRecv = new() { Text = "Oznacz jako dostarczone", Dock = DockStyle.Top };
@@ -39,7 +38,7 @@ namespace Drogeria.Views
                     Dostawca = o.Supplier.Name,
                     o.OrderDate,
                     o.ExpectedDelivery,
-                    Status = o.Status.ToString() // <- .ToString()
+                    Status = o.Status.ToString()
                 })
                 .OrderByDescending(o => o.OrderDate)
                 .ToList();
@@ -51,7 +50,7 @@ namespace Drogeria.Views
             if (dlg.ShowDialog(this) != DialogResult.OK) return;
 
             int supplierId = dlg.SelectedSupplierId;
-            var lines = dlg.Lines; // List<(int productId, int qty, decimal unitCost)>
+            var lines = dlg.Lines;
 
             if (!lines.Any())
             {
@@ -60,7 +59,6 @@ namespace Drogeria.Views
                 return;
             }
 
-            /* ---------- 1) Nagłówek zamówienia ---------- */
             var po = new PurchaseOrder
             {
                 SupplierId = supplierId,
@@ -69,9 +67,8 @@ namespace Drogeria.Views
                 Status = PurchaseOrderStatus.Draft
             };
             _ctx.PurchaseOrders.Add(po);
-            _ctx.SaveChanges(); // żeby mieć PurchaseOrderId
+            _ctx.SaveChanges();
 
-            /* ---------- 2) Linie zamówienia -------------- */
             foreach (var (prodId, qty, cost) in lines)
             {
                 _ctx.PurchaseOrderLines.Add(new PurchaseOrderLine

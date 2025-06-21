@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Bogus" Version="35.6.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
         <PrivateAssets>all</PrivateAssets>
@@ -22,6 +23,15 @@
         <SubType>Form</SubType>
       </Compile>
       <Compile Update="Forms\OrderWizardForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\ReceiveForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\NewSaleForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\LoginForm.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>

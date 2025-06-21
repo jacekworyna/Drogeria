@@ -10,7 +10,6 @@ public class Role
 
     public string? Description { get; set; }
 
-    // JSON z listą uprawnień lub osobna tabela
     public string? Permissions { get; set; }
 
     public ICollection<Employee>? Employees { get; set; }

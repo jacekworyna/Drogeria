@@ -4,5 +4,4 @@
     PurchaseIn,
     CorrectionIn,
     CorrectionOut,
-    Inventory
 }
